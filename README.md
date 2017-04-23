@@ -10,6 +10,8 @@ This one 'watches' Twitter for mentions of the user handle, then sends the info 
 
 2. API (Python)
 
-Hosted on Azure App Service, 
+Handles the response to the mention. Hosted on Azure App Service
 
-3. Python Code
+3. Random Tweets (Python)
+
+Creates a random tweet every once in a while and posts it. Runs on the shell in a SCREEN
