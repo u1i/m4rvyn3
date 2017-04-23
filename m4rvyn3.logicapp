@@ -1,0 +1,57 @@
+{
+    "$connections": {
+        "value": {
+            "twitter": {
+                "connectionId": "/subscriptions/0eefc17d-0bea-3532-beca-321e56602391/resourceGroups/logicapp/providers/Microsoft.Web/connections/twitter",
+                "connectionName": "twitter",
+                "id": "/subscriptions/0ecfb17d-0bfc-4532-beca-321e86602591/providers/Microsoft.Web/locations/southeastasia/managedApis/twitter"
+            }
+        }
+    },
+    "definition": {
+        "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+        "actions": {
+            "HTTP": {
+                "inputs": {
+                    "method": "GET",
+                    "uri": "http://gk-api2.azurewebsites.net/m4rvyn3_mention?userid=@{triggerBody()?['TweetedBy']}"
+                },
+                "runAfter": {},
+                "type": "Http"
+            }
+        },
+        "contentVersion": "1.0.0.0",
+        "outputs": {},
+        "parameters": {
+            "$connections": {
+                "defaultValue": {},
+                "type": "Object"
+            }
+        },
+        "triggers": {
+            "When_a_new_tweet_is_posted": {
+                "inputs": {
+                    "host": {
+                        "api": {
+                            "runtimeUrl": "https://logic-apis-southeastasia.azure-apim.net/apim/twitter"
+                        },
+                        "connection": {
+                            "name": "@parameters('$connections')['twitter']['connectionId']"
+                        }
+                    },
+                    "method": "get",
+                    "path": "/onnewtweet",
+                    "queries": {
+                        "searchQuery": "@@m4rvyn3"
+                    }
+                },
+                "recurrence": {
+                    "frequency": "Minute",
+                    "interval": 2
+                },
+                "splitOn": "@triggerBody()?.value",
+                "type": "ApiConnection"
+            }
+        }
+    }
+}
