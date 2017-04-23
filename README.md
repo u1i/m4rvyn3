@@ -1,6 +1,6 @@
 # m4rvyn3
 
-A quirky little chat bot named M4rvyn3 - inspired by the Hitchhiker's Guide to the Galaxy who now lives on Twitter
+A quirky little chat bot named M4rvyn3 - inspired by the Hitchhiker's Guide to the Galaxy who now lives on Twitter. Try not to take him too seriously.
 https://twitter.com/m4rvyn3
 
 ## Components
